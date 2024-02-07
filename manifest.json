@@ -1,0 +1,186 @@
+{
+  "id": "app_default",
+  "name": "Default Rimdian app template",
+  "homepage": "https://docs.rimdian.com/apps/default-template",
+  "author": "Rimdian",
+  "icon_url": "https://eu.rimdian.com/images/apps/custom_app.png",
+  "short_description": "Default Rimdian app template.",
+  "description": "Default Rimdian app template.",
+  "version": "1.0.0",
+  "ui_endpoint": "https://localhost:3000",
+  "webhook_endpoint": "https://localhost:3000/api/webhooks",
+  "tasks": [
+    {
+      "id": "app_default_task_1",
+      "name": "Task 1",
+      "description": "Example of task",
+      "is_cron": false,
+      "on_multiple_exec": "abort_existing"
+    }
+  ],
+  "data_hooks": [
+    {
+      "id": "app_default_on_create_user",
+      "name": "On create",
+      "on": "on_success",
+      "kind": ["user"],
+      "action": ["create"]
+    },
+    {
+      "id": "app_default_on_update_user",
+      "name": "On update",
+      "on": "on_success",
+      "kind": ["user"],
+      "action": ["update"]
+    },
+    {
+      "id": "app_default_on_exit_segment",
+      "name": "On exit segment",
+      "on": "on_success",
+      "kind": ["segment"],
+      "action": ["exit"]
+    }
+  ],
+  "sql_queries": [
+    {
+      "id": "app_default_sql_query_1",
+      "type": "select",
+      "name": "SQL query 1",
+      "description": "Example of predefined SQL query. For security reasons, use predefined queries to just fetch the data you needs",
+      "query": "SELECT * FROM `user` WHERE external_id = ?",
+      "test_args": ["auth-54-22"]
+    },
+    {
+      "id": "app_default_full_access",
+      "type": "select",
+      "name": "Full access",
+      "description": "The app needs full 'read access' to the tables in order to do... (name the reason).",
+      "query": "*"
+    }
+  ],
+  "extra_columns": [
+    {
+      "kind": "user",
+      "columns": [
+        {
+          "name": "app_default_column_1",
+          "type": "varchar",
+          "size": 128,
+          "is_required": false,
+          "description": "Example of extra column"
+        }
+      ]
+    }
+  ],
+  "app_tables": [
+    {
+      "name": "app_default_table_1",
+      "description": "Example of extra table",
+      "shard_key": ["id"],
+      "unique_key": ["id"],
+      "sort_key": ["created_at"],
+      "columns": [
+        {
+          "name": "id",
+          "type": "varchar",
+          "size": 64,
+          "description": "id",
+          "is_required": true
+        },
+        {
+          "name": "external_id",
+          "type": "varchar",
+          "size": 256,
+          "description": "external_id",
+          "is_required": true
+        },
+        {
+          "name": "created_at",
+          "type": "datetime",
+          "description": "created_at",
+          "is_required": true
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime",
+          "description": "updated_at",
+          "is_required": false,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "user_id",
+          "type": "varchar",
+          "size": 64,
+          "description": "user_id",
+          "is_required": true,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "merged_from_user_id",
+          "type": "varchar",
+          "size": 64,
+          "description": "merged_from_user_id",
+          "is_required": false,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "fields_timestamp",
+          "type": "json",
+          "description": "fields_timestamp",
+          "is_required": true,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "db_created_at",
+          "type": "timestamp",
+          "size": 6,
+          "default_timestamp": "CURRENT_TIMESTAMP(6)",
+          "description": "db_created_at",
+          "is_required": true,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "db_updated_at",
+          "type": "timestamp",
+          "size": 6,
+          "default_timestamp": "CURRENT_TIMESTAMP(6)",
+          "extra_definition": "ON UPDATE CURRENT_TIMESTAMP",
+          "description": "db_created_at",
+          "is_required": true,
+          "hide_in_analytics": true
+        },
+        {
+          "name": "column_varchar",
+          "type": "varchar",
+          "size": 128,
+          "description": "Example of varchar column",
+          "is_required": false
+        },
+        {
+          "name": "column_number",
+          "type": "number",
+          "description": "Example of number column",
+          "is_required": false
+        },
+        {
+          "name": "column_boolean",
+          "type": "boolean",
+          "description": "Example of boolean column",
+          "is_required": false
+        },
+        {
+          "name": "column_datetime",
+          "type": "datetime",
+          "description": "Example of datetime column",
+          "is_required": false
+        },
+        {
+          "name": "column_json",
+          "type": "json",
+          "description": "Example of json column",
+          "is_required": false
+        }
+      ]
+    }
+  ]
+}
