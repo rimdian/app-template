@@ -1,10 +1,10 @@
-## Rimdian App Template
+# Rimdian App Template
 
 This is a default template for Rimdian private apps. You can use this NextJS template to create a new app.
 
 Rimdian apps are meant to be loaded in the Rimdian UI Console as an iframe, and should be served over SSL.
 
-### Private apps capabilities
+## Private apps capabilities
 
 - Load their own UI (iframe) in the Rimdian UI Console.
 - Access the Rimdian API.
@@ -16,7 +16,7 @@ Rimdian apps are meant to be loaded in the Rimdian UI Console as an iframe, and 
 - Execute pre-defined SQL queries or have full DB access.
 - Manage their own JSON state to store credentials or other data.
 
-### Getting Started
+## Getting Started
 
 Start by cloning the repository and installing the dependencies:
 
@@ -32,7 +32,7 @@ Then, run the development server:
 yarn dev
 ```
 
-### Create a Service Account
+## Create a Service Account
 
 To give your app access to the Rimdian API, you need to create a service account in the Rimdian UI Console, at the organization level.
 
@@ -40,21 +40,39 @@ Then, you can use the Service Account email & password to login in order to rece
 
 The dev server will start with SSL. You can access the app at [https://localhost:3000](https://localhost:3000).
 
-### App architecture
+## App folders architecture
 
 - `manifest.json` - A default app manifest that describes the app and its capabilities.
 - `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) for the backend API. It receives tasks & data_hooks webhhooks from Rimdian.
 - `src/app/*` - The app UI that will be loaded in the Rimdian UI Console as an iframe.
+- `src/app/app_context.tsx` - React context that reads the `?token=xxx` parameter provided by Rimdian in the iframe URL, and fetches the app config from the API.
+- `src/app/page.tsx` - Root page that redirects to the proper screen after loading the `app_context`.
+- `src/app/dashboard` - Folder containing the app dashboard when your app is active.
+- `src/app/initializing` - Folder containing the app initialization screen where you will collect the Service Account credentials & whatever data required to activate your app.
+- `src/app/invalid-token` - Screen showed when the `app_context` fails to fetch your app from the API.
+- `src/app/stopped` - Screen showed when your app has been stopped.
+- `src/app/components.tsx` - React components used by Rimdian to make your app looking similar.
 - `src/app/actions.ts` - [Server actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations) that are be exposed to the app UI, to query the Rimdian API.
+- `src/processTasks.ts` - Example of a webhook processing a task described in your `manifest.json`.
+- `src/processDataHooks.ts` - Example of a webhook processing a data_hook described in your `manifest.json`.
 - `.env.local` - The environment variables that are used in the app (your secret app key & DB credentials).
 
-### How to install the app in Rimdian
+## How to install the app in Rimdian
 
 1. Your app should be hosted over SSL.
 2. Create a new private app in the Rimdian UI Console, provide your app secret key & load your `manifest.json`.
 3. The app will load in Rimdian and you will be able to interact with it.
 
-### Stack
+## Security
+
+- Your app (iframe) won't load if it's not hosted over SSL.
+- Your `APP_SECRET_KEY` should be kept secret and not shared with anyone.
+- Your `APP_SECRET_KEY` is used to sign the webhook payloads sent by Rimdian to your app.
+- Your `APP_SECRET_KEY` is used to sign the token provided by Rimdian to your iframe, as a URL parameter `?token=xxx`. That's how your app can authenticate that it has been loaded by a legit Rimdian parent window.
+- Your private app needs a Service Account to access the Rimdian API. The Service Account email & password should be kept secret and not shared with anyone.
+- The Service Account will have full access to the API... that's why private apps should remain private!
+
+## Stack
 
 - [Next.js](https://nextjs.org/)
 - [Ant Design](https://ant.design/)
