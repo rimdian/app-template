@@ -1,12 +1,8 @@
 import type { Metadata } from 'next'
-// import './globals.css'
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { AppContextProvider } from './app_context'
 import { App, ConfigProvider } from 'antd'
 import CSS from './css'
-
-// import { Inter } from 'next/font/google'
-// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Default Rimdian app',
@@ -20,7 +16,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <body className={inter.className}> */}
       <body>
         <AntdRegistry>
           <ConfigProvider theme={CSS.AntD}>
