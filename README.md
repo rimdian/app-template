@@ -18,7 +18,7 @@ Rimdian apps are meant to be loaded in the Rimdian UI Console as an iframe, and 
 
 ## Getting Started
 
-Start by cloning the repository and installing the dependencies:
+1. Start by cloning the repository and installing the dependencies:
 
 ```bash
 git clone
@@ -26,7 +26,18 @@ cd rimdian-app-template
 yarn install
 ```
 
-Then, run the development server:
+2. Create a `.env.local` file with the following content:
+
+```bash
+APP_SECRET_KEY=123
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=
+DB_DATABASE=dev_connected_apps
+DB_PORT=3306
+```
+
+3. Then, run the development server:
 
 ```bash
 yarn dev
