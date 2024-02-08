@@ -74,13 +74,17 @@ The dev server will start with SSL. You can access the app at [https://localhost
 
 ## Deploying to Production
 
-The repository contains a `Dockerfile` to build a production image of your app.
+The repository contains a `Dockerfile` to build a production image of your app. Don't forget to set the `APP_SECRET_KEY` environment variable in your production environment.
+
+### Deploy to Google Cloud Run
 
 The repository also contains a `cloudbuild.yaml` file to deploy your app to Google Cloud Run with a simple `git push`, combined with Google Cloud Build triggers.
 
 You can map your custom domain to Google Cloud Run and it will provision a SSL certificate for you.
 
 The `cloudbuild.yaml` file is configured to name your app `rimdian-app` by default & deploy it in the `europe-west1` region.
+
+In Google Cloud Run, you should set the `APP_SECRET_KEY` environment variable in the "Variables" section of your app in the Google Cloud UI.
 
 ## Stack
 
