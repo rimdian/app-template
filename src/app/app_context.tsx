@@ -2,6 +2,7 @@
 import { useSearchParams } from 'next/navigation'
 import { createContext, useEffect, useState } from 'react'
 import { loadAppFromTokenAction } from './actions'
+import { App } from '@/interfaces'
 
 export interface IAppContext {
   api_endpoint: string
