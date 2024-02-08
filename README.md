@@ -72,6 +72,16 @@ The dev server will start with SSL. You can access the app at [https://localhost
 - Your private app needs a Service Account to access the Rimdian API. The Service Account email & password should be kept secret and not shared with anyone.
 - The Service Account will have full access to the API... that's why private apps should remain private!
 
+## Deploying to Production
+
+The repository contains a `Dockerfile` to build a production image of your app.
+
+The repository also contains a `cloudbuild.yaml` file to deploy your app to Google Cloud Run with a simple `git push`, combined with Google Cloud Build triggers.
+
+You can map your custom domain to Google Cloud Run and it will provision a SSL certificate for you.
+
+The `cloudbuild.yaml` file is configured to name your app `rimdian-app` by default & deploy it in the `europe-west1` region.
+
 ## Stack
 
 - [Next.js](https://nextjs.org/)
