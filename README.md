@@ -1,10 +1,10 @@
 # Rimdian App Template
 
-This is a default template for Rimdian private apps. You can use this NextJS template to create a new app.
+This is a default template for Rimdian apps. You can use this NextJS template to create a new app.
 
 Rimdian apps are meant to be loaded in the Rimdian UI Console as an iframe, and should be served over SSL.
 
-## Private apps capabilities
+## Apps capabilities
 
 - Load their own UI (iframe) in the Rimdian UI Console.
 - Access the Rimdian API.
