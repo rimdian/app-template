@@ -19,14 +19,14 @@ export default function Home() {
         router.push('/dashboard')
       }
     }
-  }, [appContext.app])
+  }, [appContext.app, router])
 
   // redirect to invalid token page if token is invalid
   useEffect(() => {
     if (appContext.invalid_token) {
       router.push('/invalid-token')
     }
-  }, [appContext.invalid_token])
+  }, [appContext.invalid_token, router])
 
   // show loading if app is not loaded
   return (

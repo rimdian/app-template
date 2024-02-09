@@ -3,6 +3,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { AppContextProvider } from './app_context'
 import { App, ConfigProvider } from 'antd'
 import CSS from './css'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Default Rimdian app',
@@ -20,7 +21,9 @@ export default function RootLayout({
         <AntdRegistry>
           <ConfigProvider theme={CSS.AntD}>
             <App>
-              <AppContextProvider>{children}</AppContextProvider>
+              <Suspense>
+                <AppContextProvider>{children}</AppContextProvider>
+              </Suspense>
             </App>
           </ConfigProvider>
         </AntdRegistry>
