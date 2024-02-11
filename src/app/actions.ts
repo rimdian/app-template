@@ -168,7 +168,7 @@ async function ensureTablesExist(conn: any) {
         )`)
 }
 
-async function insertConnectedApp(
+export async function insertConnectedApp(
   conn: any,
   api_endpoint: string,
   collector_endpoint: string,
@@ -177,18 +177,24 @@ async function insertConnectedApp(
   email: string,
   encrypted_password: string
 ) {
-  const query = `
-            INSERT INTO connected_apps (api_endpoint, collector_endpoint, workspace_id, app_id, email, encrypted_password)
-            VALUES (?, ?, ?, ?, ?, ?)`
-  const args = [api_endpoint, collector_endpoint, workspace_id, app_id, email, encrypted_password]
+  // delete eventually existing record
+  let query = `DELETE FROM connected_apps WHERE api_endpoint = ? AND workspace_id = ? AND app_id = ?`
+  let args = [api_endpoint, workspace_id, app_id]
 
   try {
     await conn.query(query, args)
   } catch (e: any) {
-    // ignore duplicate entry error
-    if (e.code !== 'ER_DUP_ENTRY') {
-      throw e
-    }
+    throw e
+  }
+
+  query = `INSERT INTO connected_apps (api_endpoint, collector_endpoint, workspace_id, app_id, email, encrypted_password)
+            VALUES (?, ?, ?, ?, ?, ?)`
+  args = [api_endpoint, collector_endpoint, workspace_id, app_id, email, encrypted_password]
+
+  try {
+    await conn.query(query, args)
+  } catch (e: any) {
+    throw e
   }
 }
 
