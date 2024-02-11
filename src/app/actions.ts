@@ -146,7 +146,13 @@ export async function getAccessTokenForApp(
 ): Promise<LoginResult> {
   const app = await getConnectedApp(api_endpoint, workspace_id, app_id)
   const cryptr = new Cryptr(process.env.APP_SECRET_KEY as string)
-  return getAccessToken(api_endpoint, app.email, cryptr.decrypt(app.encrypted_password))
+  let password = ''
+  try {
+    password = cryptr.decrypt(app.encrypted_password)
+  } catch (e: any) {
+    throw new Error('APP_SECRET_KEY is invalid')
+  }
+  return getAccessToken(api_endpoint, app.email, password)
 }
 
 async function ensureTablesExist(conn: any) {
