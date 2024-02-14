@@ -1,5 +1,5 @@
 {
-  "id": "app_default",
+  "id": "appx_default",
   "name": "Default Rimdian app template",
   "homepage": "https://docs.rimdian.com/apps/default-template",
   "author": "Rimdian",
@@ -11,7 +11,7 @@
   "webhook_endpoint": "https://localhost:3000/api/webhooks",
   "tasks": [
     {
-      "id": "app_default_task_1",
+      "id": "appx_default_task_1",
       "name": "Task 1",
       "description": "Example of task",
       "is_cron": false,
@@ -20,21 +20,21 @@
   ],
   "data_hooks": [
     {
-      "id": "app_default_on_create_user",
+      "id": "appx_default_on_create_user",
       "name": "On create",
       "on": "on_success",
       "kind": ["user"],
       "action": ["create"]
     },
     {
-      "id": "app_default_on_update_user",
+      "id": "appx_default_on_update_user",
       "name": "On update",
       "on": "on_success",
       "kind": ["user"],
       "action": ["update"]
     },
     {
-      "id": "app_default_on_exit_segment",
+      "id": "appx_default_on_exit_segment",
       "name": "On exit segment",
       "on": "on_success",
       "kind": ["segment"],
@@ -43,7 +43,7 @@
   ],
   "sql_queries": [
     {
-      "id": "app_default_sql_query_1",
+      "id": "appx_default_sql_query_1",
       "type": "select",
       "name": "SQL query 1",
       "description": "Example of predefined SQL query. For security reasons, use predefined queries to just fetch the data you needs",
@@ -51,7 +51,7 @@
       "test_args": ["auth-54-22"]
     },
     {
-      "id": "app_default_full_access",
+      "id": "appx_default_full_access",
       "type": "select",
       "name": "Full access",
       "description": "The app needs full 'read access' to the tables in order to do... (name the reason).",
@@ -63,7 +63,7 @@
       "kind": "user",
       "columns": [
         {
-          "name": "app_default_column_1",
+          "name": "appx_default_column_1",
           "type": "varchar",
           "size": 128,
           "is_required": false,
@@ -74,7 +74,7 @@
   ],
   "app_tables": [
     {
-      "name": "app_default_table_1",
+      "name": "appx_default_table_1",
       "description": "Example of extra table",
       "shard_key": ["id"],
       "unique_key": ["id"],

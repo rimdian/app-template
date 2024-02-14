@@ -51,100 +51,88 @@ const CSS = {
       fontSize: '14px',
       fontFamily:
         '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif',
-
-      // '-webkit-font-smoothing': 'antialiased',
-      // '-moz-osx-font-smoothing': 'grayscale',
       WebkitFontSmoothing: 'antialiased',
       MozOsxFontSmoothing: 'grayscale',
+      color: '#414552'
 
-      // '-moz-osx-font-smoothing': 'grayscale',
-      // '-webkit-font-smoothing': 'antialiased', // decrease text weight
-      // '-webkit-text-stroke': '0.45px', // increase text weight
-      color: '#414552',
-      // '& .ant-table-tbody': {
-      //   background: 'red'
+      // TODO Implement:
+      // '.ant-table-tbody>tr:hover>td, .tr-hover:hover>td': {
+      //   borderBottom: '1px solid rgba(78, 108, 255, 0.4)'
       // },
-      '& .ant-table-tbody>tr:hover>td, .tr-hover:hover>td': {
-        borderBottom: '1px solid rgba(78, 108, 255, 0.4)'
-      },
-      // '& .tr-hover:hover>td': {
-      // backgroundColor: 'rgba(255, 255, 255, 0.5)',
+      // '.ant-table th': {
+      //   fontSize: '12px'
       // },
-      '& .ant-alert': {
-        borderTop: 'none',
-        borderRight: 'none',
-        borderLeft: 'none'
+      // '.ant-drawer .ant-drawer-close': {
+      //   position: 'fixed',
+      //   marginLeft: '-75px',
+      //   top: '10px',
+      //   backgroundColor: 'rgba(255, 255, 255, 0.4)',
+      //   color: 'white',
+      //   borderRadius: '50%',
+      //   width: '32px',
+      //   height: '32px'
+      // },
+      // '.no-header .ant-drawer-header': {
+      //   height: 0,
+      //   overflow: 'hidden',
+      //   paddingTop: 0,
+      //   paddingBottom: 0
+      // }
+    }
+
+    // TODO Implement:
+    // table: {
+    //   width: '100%',
+    //   '& td': {
+    //     verticalAlign: 'top'
+    //   }
+    // },
+    // 'a, a:visited': {
+    //   textDecoration: 'none',
+    //   color: colorPrimary
+    // },
+
+    // // prismjs override
+    // 'pre[class*="language-"]': {
+    //   margin: '0 !important'
+    // }
+  },
+
+  AntDConfig: {
+    theme: {
+      // https://ant.design/theme-editor
+      token: {
+        colorPrimary: colorPrimary,
+        colorSuccess: colorSuccess,
+        borderRadius: baseBorderRadius
       },
-      '& .ant-tag': {
+      components: {
+        Table: {
+          // reset table header
+          colorFillAlter: '#FFF',
+          colorFillContent: '#FFF',
+          colorFillSecondary: '#FFF',
+          colorTextHeading: colorLabel,
+          fontWeightStrong: 500
+        },
+        Cascader: {
+          dropdownHeight: 300
+        }
+      }
+    },
+    tag: {
+      style: {
         borderLeftWidth: '2px',
         borderTop: 'none',
         borderRight: 'none',
         borderBottom: 'none'
-      },
-      '& .ant-table th': {
-        fontSize: '12px'
-      },
-      '& .ant-drawer .ant-drawer-close': {
-        position: 'fixed',
-        marginLeft: '-75px',
-        top: '10px',
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
-        color: 'white',
-        borderRadius: '50%',
-        width: '32px',
-        height: '32px'
-      },
-      // '& .ant-drawer.with-bg': {
-      //   '& .ant-drawer-content': {
-      //     background: backgroundColorBase
-      //   },
-      //   '& .ant-drawer-header': {
-      //     border: 'none',
-      //     background: 'none'
-      //   }
-      // },
-      '& .no-header .ant-drawer-header': {
-        height: 0,
-        overflow: 'hidden',
-        paddingTop: 0,
-        paddingBottom: 0
       }
     },
-    table: {
-      width: '100%',
-      '& td': {
-        verticalAlign: 'top'
-      }
-    },
-    'a, a:visited': {
-      textDecoration: 'none',
-      color: colorPrimary
-    },
-
-    // prismjs override
-    'pre[class*="language-"]': {
-      margin: '0 !important'
-    }
-  },
-
-  AntD: {
-    // https://ant.design/theme-editor
-    token: {
-      colorPrimary: colorPrimary,
-      colorSuccess: colorSuccess,
-      borderRadius: baseBorderRadius
-    },
-    components: {
-      Table: {
-        // reset table header
-        colorFillAlter: '#FFF',
-        colorFillContent: '#FFF',
-        colorFillSecondary: '#FFF',
-        colorTextHeading: colorLabel,
-        fontWeightStrong: 500
-      },
-      Cascader: {
-        dropdownHeight: 300
+    alert: {
+      style: {
+        borderTop: 'none',
+        borderRight: 'none',
+        borderLeft: 'none'
       }
     }
   },

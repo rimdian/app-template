@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body style={CSS.GLOBAL.body}>
         <AntdRegistry>
-          <ConfigProvider theme={CSS.AntD}>
+          <ConfigProvider {...CSS.AntDConfig}>
             <App>
               <Suspense>
                 <AppContextProvider>{children}</AppContextProvider>
