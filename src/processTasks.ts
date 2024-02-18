@@ -91,14 +91,7 @@ async function processTask1(payload: WebhookPayload, access_token: string): Prom
         }
       ]
 
-      try {
-        await importData(payload.collector_endpoint, payload.workspace_id, access_token, items)
-      } catch (e: any) {
-        result.is_done = true
-        result.is_error = true
-        result.message = e
-        return result
-      }
+      result.items_to_import = items.map((item) => JSON.stringify(item))
 
       // update the worker state with the new state
       result.updated_worker_state.step1_took = '10s'
@@ -117,6 +110,13 @@ async function processTask1(payload: WebhookPayload, access_token: string): Prom
       result.is_done = true
       result.is_error = false
       result.message = 'task is done'
+      result.app_state_mutations = [
+        {
+          operation: 'set',
+          key: 'last_import_completed_at',
+          value: dayjs().toISOString()
+        }
+      ]
     default:
       // reject the task
       result.is_done = true

@@ -146,7 +146,9 @@ export interface User {
   db_updated_at: string
   //   mergeable_fields: MergeableFields
   // optional fields:
-  user_centric_consent?: boolean
+  consent_all?: boolean
+  consent_personalization?: boolean
+  consent_marketing?: boolean
   last_ip?: string
   longitude?: number
   latitude?: number
@@ -221,6 +223,8 @@ export interface WebhookResult {
   message?: string
   // for task_exec webhooks only:
   updated_worker_state: any
+  app_state_mutations?: AppStateMutation[]
+  items_to_import?: string[]
   worker_id: number
   delay_next_request_in_secs?: number
 }
@@ -258,11 +262,6 @@ export interface Account {
 }
 
 export interface LoginResult {
-  // Account               *entity.Account `json:"account"`
-  // RefreshToken          string          `json:"refresh_token"`
-  // RefreshTokenExpiresAt time.Time       `json:"refresh_token_expires_at"`
-  // AccessToken           string          `json:"access_token"`
-  // AccessTokenExpiresAt  time.Time       `json:"access_token_expires_at"`
   account: Account
   refresh_token: string
   refresh_token_expires_at: Date
