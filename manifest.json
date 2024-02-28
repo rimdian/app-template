@@ -82,72 +82,35 @@
       "columns": [
         {
           "name": "id",
-          "type": "varchar",
-          "size": 64,
-          "description": "id",
-          "is_required": true
+          "type": "varchar"
         },
         {
           "name": "external_id",
-          "type": "varchar",
-          "size": 256,
-          "description": "external_id",
-          "is_required": true
+          "type": "varchar"
         },
         {
           "name": "created_at",
-          "type": "datetime",
-          "description": "created_at",
-          "is_required": true
-        },
-        {
-          "name": "updated_at",
-          "type": "datetime",
-          "description": "updated_at",
-          "is_required": false,
-          "hide_in_analytics": true
+          "type": "datetime"
         },
         {
           "name": "user_id",
-          "type": "varchar",
-          "size": 64,
-          "description": "user_id",
-          "is_required": true,
-          "hide_in_analytics": true
+          "type": "varchar"
         },
         {
           "name": "merged_from_user_id",
-          "type": "varchar",
-          "size": 64,
-          "description": "merged_from_user_id",
-          "is_required": false,
-          "hide_in_analytics": true
+          "type": "varchar"
         },
         {
           "name": "fields_timestamp",
-          "type": "json",
-          "description": "fields_timestamp",
-          "is_required": true,
-          "hide_in_analytics": true
+          "type": "json"
         },
         {
           "name": "db_created_at",
-          "type": "timestamp",
-          "size": 6,
-          "default_timestamp": "CURRENT_TIMESTAMP(6)",
-          "description": "db_created_at",
-          "is_required": true,
-          "hide_in_analytics": true
+          "type": "timestamp"
         },
         {
           "name": "db_updated_at",
-          "type": "timestamp",
-          "size": 6,
-          "default_timestamp": "CURRENT_TIMESTAMP(6)",
-          "extra_definition": "ON UPDATE CURRENT_TIMESTAMP",
-          "description": "db_created_at",
-          "is_required": true,
-          "hide_in_analytics": true
+          "type": "timestamp"
         },
         {
           "name": "column_varchar",

@@ -54,7 +54,7 @@ The dev server will start with SSL. You can access the app at [https://localhost
 ## App folders architecture
 
 - `manifest.json` - A default app manifest that describes the app and its capabilities.
-- `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) for the backend API. It receives tasks & data_hooks webhhooks from Rimdian.
+- `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) for the backend API. It receives tasks & data_hooks webhooks from Rimdian.
 - `src/app/*` - The app UI that will be loaded in the Rimdian UI Console as an iframe.
 - `src/app/app_context.tsx` - React context that reads the `?token=xxx` parameter provided by Rimdian in the iframe URL, and fetches the app config from the API.
 - `src/app/page.tsx` - Root page that redirects to the proper screen after loading the `app_context`.

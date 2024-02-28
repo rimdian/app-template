@@ -106,7 +106,7 @@ export interface TableJoin {
   external_table: string
   external_column: string
   local_column: string
-  relationship: 'has_one' | 'has_many' | 'belongs_to'
+  relationship: 'one_to_one' | 'one_to_many' | 'many_to_one'
 }
 
 export interface DataHook {
