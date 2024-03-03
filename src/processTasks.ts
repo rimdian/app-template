@@ -43,7 +43,7 @@ export async function processTasks(payload: WebhookPayload): Promise<WebhookResu
     return result
   }
 
-  switch (payload.task_exec_worker?.task_kind) {
+  switch (payload.task_exec_worker?.task_id) {
     case 'app_default_task_1':
       // process task 1
       return await processTask1(payload, access_token)
@@ -51,7 +51,7 @@ export async function processTasks(payload: WebhookPayload): Promise<WebhookResu
       // reject the task
       result.is_done = true
       result.is_error = true
-      result.message = 'unsupported task kind: ' + payload.task_exec_worker?.task_kind
+      result.message = 'unsupported task kind: ' + payload.task_exec_worker?.task_id
       return result
   }
 }

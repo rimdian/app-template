@@ -197,7 +197,7 @@ export interface DataHookPayload {
 }
 
 export interface TaskExecWorkerPayload {
-  task_kind: string
+  task_id: string
   task_name: string
   task_exec_id: string
   task_exec_created_at: string
