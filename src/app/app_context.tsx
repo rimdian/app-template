@@ -5,18 +5,12 @@ import { loadAppFromTokenAction } from './actions'
 import { App } from '@/interfaces'
 
 export interface IAppContext {
-  api_endpoint: string
-  collector_endpoint: string
-  workspace_id: string
   invalid_token: boolean
   app?: App
   reload: () => Promise<void>
 }
 
 const defaultState = {
-  api_endpoint: '',
-  collector_endpoint: '',
-  workspace_id: '',
   invalid_token: false,
   reload: async () => {}
 }
@@ -41,19 +35,13 @@ export function AppContextProvider({ children }: { children: any }) {
         const data = await loadAppFromTokenAction(token)
         // console.log(data)
         setValue({
-          api_endpoint: data.api_endpoint,
-          collector_endpoint: data.collector_endpoint,
-          workspace_id: data.workspace_id,
-          app: data.app,
+          app: data.app as App,
           invalid_token: false,
           reload: reload
         })
       } catch (error) {
         console.error(error)
         setValue({
-          api_endpoint: '',
-          collector_endpoint: '',
-          workspace_id: '',
           app: undefined,
           invalid_token: true,
           reload: reload

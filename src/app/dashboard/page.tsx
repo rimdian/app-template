@@ -20,8 +20,8 @@ export default function Page() {
     setLoadingQuery1(true)
     try {
       const result = await execQuery({
-        api_endpoint: ctx.api_endpoint,
-        workspace_id: ctx.workspace_id,
+        api_endpoint: ctx.app?.api_endpoint as string,
+        workspace_id: ctx.app?.workspace_id as string,
         app_id: ctx.app?.id as string,
         query_id: ctx.app?.manifest.sql_queries?.[0].id || '',
         args: [values.user_external_id]
@@ -40,8 +40,8 @@ export default function Page() {
     setLoadingQuery2(true)
     try {
       const result = await execQuery({
-        api_endpoint: ctx.api_endpoint,
-        workspace_id: ctx.workspace_id,
+        api_endpoint: ctx.app?.api_endpoint as string,
+        workspace_id: ctx.app?.workspace_id as string,
         app_id: ctx.app?.id as string,
         query_id: ctx.app?.manifest.sql_queries?.[1].id || '',
         query: values.query

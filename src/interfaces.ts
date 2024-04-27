@@ -18,7 +18,13 @@ export interface App {
   created_at: Date
   updated_at: Date
   deleted_at?: Date
-  ui_token?: string // token used to authenticate to the UI for private apps
+  // enriched for apps:
+  workspace_id: string
+  api_endpoint: string
+  collector_endpoint: string
+  cubejs_endpoint: string
+  cubejs_token: string
+  account_timezone: string
 }
 
 export interface AppManifest {

@@ -17,9 +17,9 @@ export default function Page() {
     setLoading(true)
 
     activateAppAction(
-      appContext.api_endpoint as string,
-      appContext.collector_endpoint as string,
-      appContext.workspace_id as string,
+      appContext.app?.api_endpoint as string,
+      appContext.app?.collector_endpoint as string,
+      appContext.app?.workspace_id as string,
       appContext.app?.id as string,
       values.email,
       values.password,
