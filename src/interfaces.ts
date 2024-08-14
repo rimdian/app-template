@@ -25,6 +25,15 @@ export interface App {
   cubejs_endpoint: string
   cubejs_token: string
   account_timezone: string
+  sql_access: AppSQLAccess
+}
+
+export interface AppSQLAccess {
+  host: string
+  port: string
+  user: string
+  password: string
+  database: string
 }
 
 export interface AppManifest {
